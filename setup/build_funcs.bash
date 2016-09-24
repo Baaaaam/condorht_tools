@@ -925,15 +925,16 @@ function build_cyclus() {
   CMAKE_PREFIX_PATH+=":"$install_dir/boost
 
   setup_build repo python
- 
+	echo "LD_LIBRARY_PATH" $LD_LIBRARY_PATH 
 	
   setup_string=
   setup_string+=" "--hdf5_root=$install_dir/hdf5
   setup_string+=" "--coin_root=$install_dir/Cbc
   setup_string+=" "--boost_root=$install_dir/boost
-  setup_string+=" "-DCMAKE_C_COMPILER=$install_dir/gcc/bin/gcc
+  setup_string+=" "-DCMAKE_C_COMPILER=$install_dir/gcc/bin/gcc 
   setup_string+=" "-DCMAKE_CXX_COMPILER=$install_dir/gcc/bin/g++
   setup_string+=" "-DCMAKE_PREFIX_PATH=$CMAKE_PREFIX_PATH
+  setup_string+=" "-DMAKE_C_FLAGS=lpthread
   
   setup_string_2=
   setup_string_2+=" "--build_dir=cyclus_bld
@@ -941,14 +942,14 @@ function build_cyclus() {
 
 
   cd $name
-  python install.py $setup_string  $setup_string_2 -j $jobs
+  python3 install.py $setup_string  $setup_string_2
  
  
   name=cycamore
   version=dev
   folder=$name-$version
   repo=https://github.com/Baaaaam/$name
-  branch=condor_test
+  branch=managerinst_deploying
 
   export CMAKE_PREFIX_PATH=$CMAKE_PREFIX_PATH
   CMAKE_PREFIX_PATH+=":"$install_dir/sigcpp
@@ -980,7 +981,7 @@ function build_cyclus() {
   setup_string_2+=" "--prefix=$install_dir/cyclus
   
   cd $name
-  python install.py $setup_string  $setup_string_2 -j $jobs
+  python3 install.py $setup_string  $setup_string_2 
 
 
 

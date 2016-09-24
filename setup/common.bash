@@ -21,7 +21,7 @@ function set_versions() {
 
   export    openmpi_version=1.10.2
   export      cmake_version=3.4.3
-  export     python_version=2.7.11
+  export     python_version=3.5.0
   export       hdf5_version=1.8.13
   export     lapack_version=3.6.0
 
@@ -61,6 +61,7 @@ function set_versions() {
 
 # Set environment variables
 function set_env() {
+  export LD_LIBRARY_PATH=/usr/lib:$LD_LIBRARY_PATH
   # GMP
   export LD_LIBRARY_PATH=$install_dir/gmp/lib:$LD_LIBRARY_PATH
 
@@ -84,8 +85,9 @@ function set_env() {
   export LD_LIBRARY_PATH=$install_dir/cmake/lib:$LD_LIBRARY_PATH
 
   # Python
-  export PATH=$install_dir/python/bin:$PATH
-  export LD_LIBRARY_PATH=$install_dir/python/lib:$LD_LIBRARY_PATH
+  export PATH=$PATH:$install_dir/python/bin
+  export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$install_dir/python/lib
+  alias python="$install_dir/python/bin/python3"
 
   # HDF5
   export PATH=$install_dir/hdf5/bin:$PATH
@@ -96,29 +98,29 @@ function set_env() {
 
   # Setuptools
   export PATH=$install_dir/setuptools/bin:$PATH
-  export PYTHONPATH=$install_dir/setuptools/lib/python2.7/site-packages:$PYTHONPATH
+  export PYTHONPATH=$install_dir/setuptools/lib/python3.5/site-packages:$PYTHONPATH
 
   # Cython
   export PATH=$install_dir/cython/bin:$PATH
-  export PYTHONPATH=$install_dir/cython/lib/python2.7/site-packages:$PYTHONPATH
+  export PYTHONPATH=$install_dir/cython/lib/python3.5/site-packages:$PYTHONPATH
 
   # NumPy
   export PATH=$install_dir/numpy/bin:$PATH
-  export PYTHONPATH=$install_dir/numpy/lib/python2.7/site-packages:$PYTHONPATH
+  export PYTHONPATH=$install_dir/numpy/lib/python3.5/site-packages:$PYTHONPATH
 
   # SciPy
   export PATH=$install_dir/pytables/bin:$PATH
-  export PYTHONPATH=$install_dir/scipy/lib/python2.7/site-packages:$PYTHONPATH
+  export PYTHONPATH=$install_dir/scipy/lib/python3.5/site-packages:$PYTHONPATH
 
   # NumExpr
-  export PYTHONPATH=$install_dir/numexpr/lib/python2.7/site-packages:$PYTHONPATH
+  export PYTHONPATH=$install_dir/numexpr/lib/python3.5/site-packages:$PYTHONPATH
 
   # PyTables
-  export PYTHONPATH=$install_dir/pytables/lib/python2.7/site-packages:$PYTHONPATH
+  export PYTHONPATH=$install_dir/pytables/lib/python3.5/site-packages:$PYTHONPATH
 
   # Nose
   export PATH=$install_dir/nose/bin:$PATH
-  export PYTHONPATH=$install_dir/nose/lib/python2.7/site-packages:$PYTHONPATH
+  export PYTHONPATH=$install_dir/nose/lib/python3.5/site-packages:$PYTHONPATH
 
   # CUBIT
   export PATH=$install_dir/cubit/bin:$PATH
@@ -137,7 +139,7 @@ function set_env() {
 
   # PyTAPS
   export PATH=$install_dir/pytaps/bin:$PATH
-  export PYTHONPATH=$install_dir/pytaps/lib/python2.7/site-packages:$PYTHONPATH
+  export PYTHONPATH=$install_dir/pytaps/lib/python3.5/site-packages:$PYTHONPATH
 
   # Geant4
   export PATH=$install_dir/geant4/bin:$PATH
@@ -156,7 +158,7 @@ function set_env() {
 
   # PyNE
   export PATH=$install_dir/pyne/bin:$PATH
-  export PYTHONPATH=$install_dir/pyne/lib/python2.7/site-packages:$PYTHONPATH
+  export PYTHONPATH=$install_dir/pyne/lib/python3.5/site-packages:$PYTHONPATH
 
   # BOOST
   export LD_LIBRARY_PATH=$install_dir/boost/lib:$LD_LIBRARY_PATH
