@@ -44,6 +44,7 @@ function set_versions() {
 
   export      dagmc_version=dev
   export       pyne_version=dev
+  export        cde_version=dev
 }
 
 # Set environment variables
@@ -144,4 +145,7 @@ function set_env() {
   # PyNE
   export PATH=$install_dir/pyne/bin:$PATH
   export PYTHONPATH=$install_dir/pyne/lib/python2.7/site-packages:$PYTHONPATH
+  
+  # CDE
+  export PATH=$install_dir/cde:$PATH
 }

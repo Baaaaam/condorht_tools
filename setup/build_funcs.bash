@@ -671,3 +671,20 @@ function build_pyne() {
 
   finalize_build
 }
+
+
+# Build cde
+function build_cde() {
+  name=cde
+  version=master
+  folder=$name-$version
+  repo=https://github.com/pgbovine/$name
+  branch=develop
+
+  setup_build repo 
+
+
+  cd $name
+  make
+  finalize_build
+}
