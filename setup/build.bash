@@ -127,6 +127,9 @@ function get_dependencies() {
   fi
   if [[ " ${packages[@]} " =~ " cde " ]]; then
     packages+=(gcc)
+    packages+=(gmp)
+    packages+=(mpfr)
+    packages+=(mpc)
   fi
 
   # Put the dependencies in the correct build order
