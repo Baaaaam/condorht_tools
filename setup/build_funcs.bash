@@ -671,3 +671,17 @@ function build_pyne() {
 
   finalize_build
 }
+
+function build_mcnp() {
+  name=mcnp
+  version=bin
+  folder=$name-$version
+
+  cd $install_dir
+  mkdir $folder
+  cd $folder
+  cp -r /mnt/gluster/$USER/mcnp/MCNP_CODE/bin .
+
+  finalize_build
+
+}
