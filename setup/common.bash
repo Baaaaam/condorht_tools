@@ -147,7 +147,7 @@ function set_env() {
   export PYTHONPATH=$install_dir/pyne/lib/python2.7/site-packages:$PYTHONPATH
 
   # MCNP
-  export PATH=$install_dir/mcnp/bin:$PATH
+  export PATH=$install_dir/mcnp-bin/bin:$PATH
   export LD_LIBRARY_PATH=$install_dir/mcnp/bin:$LD_LIBRARY_PATH
   # Increase the stacksize
   ulimit -s unlimited
