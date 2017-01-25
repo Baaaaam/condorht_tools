@@ -679,8 +679,27 @@ function build_mcnp() {
 
   cd $install_dir
   mkdir $folder
+  ln -snf $folder $name
   cd $folder
   cp -r /mnt/gluster/$USER/mcnp/MCNP_CODE/bin .
+
+  finalize_build
+
+}
+
+
+function build_mure() {
+  name=mure
+  version=dev
+  folder=$name-$version
+  tarball=$name.tar
+
+  cd $install_dir
+  ln -snf $folder $name
+  mkdir -p $folder
+  cd $folder
+  tar -xzvf $dist_dir/$tarball
+  ./install.sh --MCNP-version=6
 
   finalize_build
 

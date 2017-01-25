@@ -128,12 +128,15 @@ function get_dependencies() {
   if [[ " ${packages[@]} " =~ " mcnp " ]]; then
     : # no dependencies
   fi
+  if [[ " ${packages[@]} " =~ " mure " ]]; then
+    packages+=$(mcnp)
+  fi
 
   # Put the dependencies in the correct build order
   all_packages=" gmp mpfr mpc gcc openmpi cmake python hdf5 lapack
                  setuptools cython numpy scipy numexpr pytables nose
                  cubit cgm moab meshkit pytaps mcnp5 geant4 fluka dagmc pyne
-                 mcnp"
+                 mcnp mure"
   packages_ordered=()
   for package in $all_packages; do
     if [[ " ${packages[@]} " =~ " ${package} " ]]; then

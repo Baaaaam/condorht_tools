@@ -151,4 +151,15 @@ function set_env() {
   export LD_LIBRARY_PATH=$install_dir/mcnp/bin:$LD_LIBRARY_PATH
   # Increase the stacksize
   ulimit -s unlimited
+
+  # MURE Package Libraries
+  export MURE_PATH=$install_dir/mure
+  export DATADIR=${MURE_PATH}/data
+  export MURE_include=${MURE_PATH}/source/include
+  export MURE_ExternalPkg=${MURE_PATH}/source/external
+  export MURE_lib=${MURE_PATH}/lib
+
+
+
+
 }
