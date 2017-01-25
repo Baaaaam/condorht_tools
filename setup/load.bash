@@ -17,7 +17,7 @@ rm -rf $build_dir $install_dir
 mkdir -p $dist_dir $build_dir $install_dir $copy_dir $DATAPATH
 
 # Make sure all the dependencies are built
-packages=(mcnp mure)
+packages=(mcnp smure)
 for name in "${packages[@]}"; do
   eval version=\$"$name"_version
   echo Ensuring build of $name-$version ...
@@ -30,5 +30,5 @@ mcnp6
 
 cp $dist_dir/REP_MOX.tar.gz .
 tar -xvf REP_MOX.tar.gz
-g++  -o MOX MOX.cxx -I$MURE_include -I$MURE_ExternalPkg -L$MURE_lib -lMUREpkg -lvalerr -lmctal -fopenmp
-./MOX 
+g++ -o MOX MOX.cxx -I$MURE_include -I$MURE_ExternalPkg -L$MURE_lib -lMUREpkg -lvalerr -lmctal -fopenmp
+./MOX 1 2 3 4 5 6 7 7
