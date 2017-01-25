@@ -44,7 +44,10 @@ function set_versions() {
 
   export      dagmc_version=dev
   export       pyne_version=dev
-  export       pyne_version=bin
+  export       mcnp_version=bin
+  export       mure_version=dev
+  export      smure_version=dev
+
 }
 
 # Set environment variables
@@ -153,11 +156,12 @@ function set_env() {
   ulimit -s unlimited
 
   # MURE Package Libraries
-  export MURE_PATH=$install_dir/mure
+  export MURE_PATH=$install_dir/smure-dev
   export DATADIR=${MURE_PATH}/data
   export MURE_include=${MURE_PATH}/source/include
   export MURE_ExternalPkg=${MURE_PATH}/source/external
   export MURE_lib=${MURE_PATH}/lib
+  export LD_LIBRARY_PATH=$MURE_lib:$LD_LIBRARY_PATH
 
 
 

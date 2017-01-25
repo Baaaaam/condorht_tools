@@ -698,7 +698,28 @@ function build_mure() {
   ln -snf $folder $name
   mkdir -p $folder
   cd $folder
-  tar -xzvf $dist_dir/$tarball
+  cp $dist_dir/$tarball .
+  tar -xvf $tarball
+  rm $tarball
+  ./install.sh --MCNP-version=6
+
+  finalize_build
+
+}
+
+function build_smure() {
+  name=smure
+  version=dev
+  folder=$name-$version
+  tarball=$name.tar
+
+  cd $install_dir
+  ln -snf $folder $name
+  mkdir -p $folder
+  cd $folder
+  cp $dist_dir/$tarball .
+  tar -xvf $tarball
+  rm $tarball
   ./install.sh --MCNP-version=6
 
   finalize_build
