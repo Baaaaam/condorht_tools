@@ -156,7 +156,7 @@ function set_env() {
   ulimit -s unlimited
 
   # MURE Package Libraries
-  export MURE_PATH=$install_dir/smure-dev
+  export MURE_PATH=$install_dir/mure-dev
   export DATADIR=${MURE_PATH}/data
   export MURE_include=${MURE_PATH}/source/include
   export MURE_ExternalPkg=${MURE_PATH}/source/external

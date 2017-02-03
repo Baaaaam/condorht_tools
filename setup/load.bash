@@ -28,7 +28,7 @@ echo $PATH
 mcnp6
 
 
-cp $dist_dir/REP_MOX.tar.gz .
-tar -xvf REP_MOX.tar.gz
-g++ -o MOX MOX.cxx -I$MURE_include -I$MURE_ExternalPkg -L$MURE_lib -lMUREpkg -lvalerr -lmctal -fopenmp
+cp $dist_dir/REP_MOX/REP_MOX.tar .
+tar -xvf REP_MOX.tar
+g++ -o MOX MOX.cc -I$MURE_include -I$MURE_ExternalPkg -L$MURE_lib -lMUREpkg -lvalerr -lmctal -fopenmp
 ./MOX 1 2 3 4 5 6 7 7
