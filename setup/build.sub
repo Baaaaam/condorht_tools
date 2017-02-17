@@ -2,8 +2,8 @@
 universe = vanilla
 
 # Files to place stdout and stderr
-output = process_$(Cluster)_$(Process).out
-error = process_$(Cluster)_$(Process).err
+output = /home/mouginot/process_$(Cluster)_$(Process).out
+error = /home/mouginotprocess_$(Cluster)_$(Process).err
 
 # Job status log
 log = process_$(Cluster)_$(Process).log
