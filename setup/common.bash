@@ -15,9 +15,9 @@ function set_dirs() {
 # Set package versions
 function set_versions() {
   export        gmp_version=6.1.0
-  export       mpfr_version=3.1.3
+  export       mpfr_version=3.1.4
   export        mpc_version=1.0.3
-  export        gcc_version=5.3.0
+  export        gcc_version=5.4.0
 
   export    openmpi_version=1.10.2
   export      cmake_version=3.4.3
@@ -47,6 +47,7 @@ function set_versions() {
   export       mcnp_version=bin
   export       mure_version=dev
   export      smure_version=dev
+  export       root_version=6.06.02
 
 }
 
@@ -63,7 +64,7 @@ function set_env() {
 
   # GCC
   export PATH=$install_dir/gcc/bin:$PATH
-  export LD_LIBRARY_PATH=$install_dir/gcc/lib:$LD_LIBRARY_PATH
+#  export LD_LIBRARY_PATH=$install_dir/gcc/lib:$LD_LIBRARY_PATH
   export LD_LIBRARY_PATH=$install_dir/gcc/lib64:$LD_LIBRARY_PATH
 
   # OpenMPI
@@ -162,6 +163,11 @@ function set_env() {
   export MURE_ExternalPkg=${MURE_PATH}/source/external
   export MURE_lib=${MURE_PATH}/lib
   export LD_LIBRARY_PATH=$MURE_lib:$LD_LIBRARY_PATH
+
+  #ROOT
+  export ROOTSYS=$install_dir/root
+  export PATH=${PATH}:${ROOTSYS}/bin
+  export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:$ROOTSYS/lib/"
 
 
 

@@ -547,13 +547,13 @@ function build_mcnp5() {
 }
 
 # Build Geant4
-function build_geant4() {
-  name=geant4
-  version=$geant4_version
+function build_root() {
+  name=root
+  version=$root_version
   folder=$name-$version
   tarball=$name.$version.tar.gz
   tar_f=$name.$version
-  url=http://geant4.cern.ch/support/source/$tarball
+  url=http://root.cern.ch/support/source/$tarball
 
   setup_build tar
 
@@ -624,10 +624,10 @@ function build_dagmc() {
       cmake_string+=" "-DMPI_BUILD=ON
     fi
   fi
-  if [[ " ${packages[@]} " =~ " geant4 " ]]; then
+  if [[ " ${packages[@]} " =~ " root " ]]; then
     cmake_string+=" "-DBUILD_GEANT4=ON
-    cmake_string+=" "-DGEANT4_DIR=$install_dir/geant4
-    cmake_string+=" "-DGEANT4_CMAKE_CONFIG:PATH=$install_dir/geant4/lib64/Geant4-10.2.0
+    cmake_string+=" "-DGEANT4_DIR=$install_dir/root
+    cmake_string+=" "-DGEANT4_CMAKE_CONFIG:PATH=$install_dir/root/lib64/Geant4-10.2.0
   fi
   if [[ " ${packages[@]} " =~ " fluka " ]]; then
     cmake_string+=" "-DBUILD_FLUKA=ON
@@ -724,4 +724,26 @@ function build_smure() {
 
   finalize_build
 
+}
+
+function build_root() {
+  name=root
+  version=$root_version
+  folder=$name-$version
+  tarball=${name}_v${version}.source.tar.gz
+  tar_f=$name-$version
+  url=http://root.cern.ch/download/$tarball
+  setup_build tar
+
+  cmake_string=
+  cmake_string+=" "-DCMAKE_C_COMPILER=$install_dir/gcc/bin/gcc
+  cmake_string+=" "-DCMAKE_CXX_COMPILER=$install_dir/gcc/bin/g++
+  cmake_string+=" "-DCMAKE_INSTALL_PREFIX=$install_dir/$folder
+
+  cd bld
+  cmake ../src $cmake_string
+  make -j $jobs
+  make install
+
+  finalize_build
 }

@@ -17,17 +17,19 @@ rm -rf $build_dir $install_dir
 mkdir -p $dist_dir $build_dir $install_dir $copy_dir $DATAPATH
 
 # Make sure all the dependencies are built
-packages=(mcnp mure)
+packages=(gcc cmake mpc mpfr gmp python root)
 for name in "${packages[@]}"; do
   eval version=\$"$name"_version
   echo Ensuring build of $name-$version ...
   ensure_build $name $version
 done
-echo $PATH
 
-mkdir MOX
-cd MOX
-cp -v /mnt/gluster/mouginot/MOX/*.* .
-cp -r /mnt/gluster/mouginot/MOX/ReactionList .
-g++  -o MOX MOX.cc -I$MURE_include -I$MURE_ExternalPkg -L$MURE_lib -lMUREpkg -lvalerr -lmctal -fopenmp
-./MOX 0.03 0.5 5 19 5 5 6 4 2 5 1 2 5 5 5 5
+echo $LD_LIBRARY_PATH
+
+cd /mnt/gluster/mouginot/TRU_MOX_SOFT/XS/Generate
+echo "1"
+gcc -o Train_XS  `root-config --cflags` Train_XS.cxx `root-config --glibs` -lTMVA
+echo "2"
+./Train_XS 1
+
+
