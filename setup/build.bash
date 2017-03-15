@@ -129,6 +129,10 @@ function get_dependencies() {
     : # no dependencies
   fi
   if [[ " ${packages[@]} " =~ " mure " ]]; then
+    packages+=(gcc)
+    packages+=(mpc)
+    packages+=(mpfr)
+    packages+=(gmp)
     packages+=(mcnp)
   fi
   if [[ " ${packages[@]} " =~ " smure " ]]; then
