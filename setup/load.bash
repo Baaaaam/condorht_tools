@@ -26,9 +26,9 @@ done
 
 echo $LD_LIBRARY_PATH
 
-cd /mnt/gluster/mouginot/TRU_MOX_SOFT/XS/Generate
+cd /mnt/gluster/mouginot/rnr_mlp_xs
 echo "1"
-gcc -o Train_XS  `root-config --cflags` Train_XS.cxx `root-config --glibs` -lTMVA
+gcc -o Train_XS  -std=c++11 `root-config --cflags` Train_XS.cxx `root-config --glibs` -lTMVA 
 echo "2"
 ./Train_XS 1
 
